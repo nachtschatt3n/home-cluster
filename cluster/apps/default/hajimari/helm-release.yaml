@@ -30,7 +30,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 3000
+            port: &port 80
         type: LoadBalancer
     hajimari:
       defaultEnable: false
