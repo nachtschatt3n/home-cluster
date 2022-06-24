@@ -34,24 +34,3 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: pihole-ingress
-  namespace: default
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-    - host: pihole.mathiasuhl.de
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: pihole-service
-                port:
-                  number: 80
