@@ -1,37 +1,36 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pihole
+  name: influxdb
   namespace: default
   labels:
-    app: pihole
+    app: influxdb
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: pihole
+      app: influxdb
   template:
     metadata:
       labels:
-        app: pihole
+        app: influxdb
     spec:
       containers:
-        - name: pihole
-          image: pihole/pihole:v5.1.2
+        - name: influxdb
+          image: influxdb:1.8
           ports:
             - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: pihole-service
+  name: influxdb-service
   namespace: default
 spec:
   selector:
-    app: pihole
+    app: influxdb
   ports:
     - protocol: TCP
-      port: 80
+      port: 8081
       targetPort: 80
   type: LoadBalancer
