@@ -22,6 +22,15 @@ spec:
           ports:
             - containerPort: 8081
             - containerPort: 8082
+          volumeMounts:
+            - mountPath: /opt/iobroker
+              name: iobroker-data
+      restartPolicy: Always
+      volumes:
+        - name: iobroker-data
+          persistentVolumeClaim:
+            claimName: iobroker-data-vol
+
 ---
 apiVersion: v1
 kind: Service
