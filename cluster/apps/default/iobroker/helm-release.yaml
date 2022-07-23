@@ -56,5 +56,5 @@ spec:
     - protocol: TCP
       port: 1885
       targetPort: 1885
-      name: shellyMQTT
+      name: shelly-mqtt
   type: LoadBalancer
