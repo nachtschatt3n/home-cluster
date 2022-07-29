@@ -26,6 +26,9 @@ spec:
             - containerPort: 8081
             - containerPort: 8082
             - containerPort: 1885
+            - containerPort: 1880
+            - containerPort: 51989
+            - containerPort: 51988
           volumeMounts:
             - mountPath: /opt/iobroker
               name: iobroker-data
@@ -57,4 +60,16 @@ spec:
       port: 1885
       targetPort: 1885
       name: shelly-mqtt
+    - protocol: TCP
+      port: 1880
+      targetPort: 1880
+      name: node-red
+    - protocol: TCP
+      port: 51989
+      targetPort: 51989
+      name: nuki-adapter
+    - protocol: TCP
+      port: 51988
+      targetPort: 51988
+      name: alexa2-proxy
   type: LoadBalancer
