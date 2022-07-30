@@ -42,9 +42,9 @@ spec:
     - protocol: TCP
       port: 8086
       targetPort: 8086
-      name: InfluxHTTP
+      name: influxdb-http
     - protocol: TCP
       port: 8088
       targetPort: 8088
-      name: InfluxRPC
+      name: influxdb-rpc
   type: LoadBalancer
