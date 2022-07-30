@@ -6,3 +6,4 @@ resources:
   - hajimari
   - pihole
   - iobroker
+  - influxdb

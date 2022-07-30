@@ -19,7 +19,16 @@ spec:
         - name: influxdb
           image: influxdb:1.8
           ports:
-            - containerPort: 80
+            - containerPort: 8086
+            - containerPort: 8088
+          volumeMounts:
+            - mountPath: /opt
+              name: influxdb-data
+      volumes:
+        - name: influxdb-data
+          persistentVolumeClaim:
+            claimName: influxdb-data-vol
+
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +40,11 @@ spec:
     app: influxdb
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 80
+      port: 8086
+      targetPort: 8086
+      name: InfluxHTTP
+    - protocol: TCP
+      port: 8088
+      targetPort: 8088
+      name: InfluxRPC
   type: LoadBalancer
