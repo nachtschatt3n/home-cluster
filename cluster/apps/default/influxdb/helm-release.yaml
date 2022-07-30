@@ -22,12 +22,18 @@ spec:
             - containerPort: 8086
             - containerPort: 8088
           volumeMounts:
-            - mountPath: /opt
+            - mountPath: /var/lib/influxdb
               name: influxdb-data
       volumes:
         - name: influxdb-data
           persistentVolumeClaim:
             claimName: influxdb-data-vol
+  values:
+    DOCKER_INFLUXDB_INIT_MODE: setup
+    DOCKER_INFLUXDB_INIT_USERNAME: iobroker
+    DOCKER_INFLUXDB_INIT_PASSWORD: iobroker8ouz24u8or4r
+    DOCKER_INFLUXDB_INIT_ORG: cberg
+    DOCKER_INFLUXDB_INIT_BUCKET: iobroker
 
 ---
 apiVersion: v1
